@@ -28,6 +28,10 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
+        public async Task<IActionResult> ShowSearchEngineOutput(String SearchName) 
+        { 
+            return View("Index", await _context.Pessoa.Where(j=>j.Name.Contains(SearchName)).ToListAsync()); 
+        }
 
         // GET: Pessoas/Details/5
         public async Task<IActionResult> Details(int? id)
